@@ -4,7 +4,7 @@ Now that the holidays are over and everyone is slowly getting back to work (incl
 
 We have been very hard at work since summer, and a lot have been going on under the hood here:
 
-- Updates and improvements to our [open source projects](https://github.com/mlsecproject). Both [Combine and TIQ-test](https://www.mlsecproject.org/blog/2014/08/12/open-source-tools-release-combine-and-tiq-test/) are being used by several individuals and organizations for research and operations. It's wor
+- Updates and improvements to our [open source projects](https://github.com/mlsecproject). Both [Combine and TIQ-test](https://www.mlsecproject.org/blog/2014/08/12/open-source-tools-release-combine-and-tiq-test/) are being used by several individuals and organizations for research and operations.
 
 - We have created a [community and a discussion group](https://www.mlsecproject.org/blog/2014/08/27/turn-down-math-introducing-mlsec-project-discussion-group/) for open-source contributors of MLSec Project and people working with data science and machine learning on information security.
 
@@ -14,7 +14,7 @@ In other news, I have co-founded [Niddel](http://www.niddel.com) to handle produ
 
 ### Looking forward
 
-The project is going to be refocused on our community, and everyone is invited to make contributions on blog posts around their research and projects that are promoting the increased use of data-driven techniques on security. If you have some cool work done in this space and would like to join our community, please send us an [e-mail](mailto:contact@mlsecproject.org) asking for access.
+The project is going to be refocused on our community and open-source initiatives, and everyone is invited to make contributions on blog posts around their research and projects that promote the increased use of data-driven techniques on security. If you have some cool work done in this space and would like to join our community, please send us an [e-mail](mailto:contact@mlsecproject.org) asking for access.
 
 We already have lined up for January:
 
