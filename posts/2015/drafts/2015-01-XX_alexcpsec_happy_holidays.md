@@ -1,4 +1,4 @@
-# Happy new year from MLSec Project!
+# Happy Holidays from MLSec Project!
 
 Now that the holidays are over and everyone is slowly getting back to work (including yours truly), I think it would be a good time to update you in what the MLSec Project have been up to these last few months of 2014.
 
