@@ -1,4 +1,4 @@
-# Security Data Clearing House
+# Introducing SecRepo - A Security Data Clearing House
 
 I'm going to start off my first guest blog here at [MLSec Project](https://www.mlsecproject.org/blog/) by talking about one of the biggest challenges, and a solution, to getting started in Security Data Analysis. Data.
 
@@ -12,6 +12,6 @@ There have been a couple of datasets related to security that have become the de
 
 While it’s fantastic that people are producing data, it’s hard to find if you don’t know where to start looking.
 
-Enter [Secrepo](http://secrepo.com), a site that attempts to get people connected to the data they want for the use cases they’d like to explore. A central repository open to hosting security-related data in addition to pointing out the great resources available. Our long term vision involves creating open data, connecting researchers with other datasets, and even hosting analyses that leverage the created/linked data.
+Enter [SecRepo](http://secrepo.com), a site that attempts to get people connected to the data they want for the use cases they’d like to explore. A central repository open to hosting security-related data in addition to pointing out the great resources available. Our long term vision involves creating open data, connecting researchers with other datasets, and even hosting analyses that leverage the created/linked data.
 
 We’re open to any contributions from data you’d like hosted to datasets you’ve found interesting and useful.
