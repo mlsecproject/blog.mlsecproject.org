@@ -1,6 +1,6 @@
 # Introducing SecRepo - A Security Data Clearing House
 
-I'm going to start off my first guest blog here at [MLSec Project](https://www.mlsecproject.org/blog/) by talking about one of the biggest challenges, and a solution, to getting started in Security Data Analysis. Data.
+I'm going to start off my first guest blog here at [MLSec Project](https://www.mlsecproject.org/blog/) by talking about one of the biggest challenges, and a proposed solution, to getting started in Security Data Analysis. Data.
 
 One of the challenges with learning or performing data analysis (statistical analysis, visualizations, and machine learning) is the "getting the data" part. Where can data be obtained, is it open, does it contain known (labeled) samples? Getting data that can be used across analyses seems to be a problem within the Information Security industry due to the paranoia and tight-lipped attitude when it comes to sharing data; especially data that contains any kind of malware or breach information. However, there are lots of people willing to share at least some information.
 
