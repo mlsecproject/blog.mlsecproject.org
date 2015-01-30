@@ -20,4 +20,4 @@ The last talk I saw was [The Dark Art of Data Visualization](https://archive.org
 
 Overall it was a great conference, and as long as I'm able to win the F5 race, or present I plan on going. Worst case I watch the talks live via streaming (a completely acceptable worst case). Thanks again to the organizers and staff for putting on a great conference, and paying attention to the important, and increasing, part Data Analysis plays in the Information Security Industry.
 
-P.S. I didn't say "Cyber" once... shit.
+P.S. I didn't say "Cyber" once... damn!
