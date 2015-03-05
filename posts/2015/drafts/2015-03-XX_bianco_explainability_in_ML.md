@@ -21,28 +21,29 @@ Now there are many features one could extract from a typical HTTP server log.  H
 
 * HTTP method
 * User-Agent
-* Request status code
+* Request status code (sebas comment:should this be Response status code?)
 * Target Domain or IP
 * Document Location
 * Document type 
 * Request parameter names & values
 * Number of bytes sent
 * Number of bytes received
+(sebas comment: Not sure if it is good to put so many technical and specific details in this more 'general' discussion)
 
-It seems like given those, you should be able to look at an individual entry and decide whether it has SQL in the request somewhere (probably in the parameter values).  As a human, you certainly can.  Keep in mind, though, that most of these "features" are actually not very useful to a computer.  Most of these are strings (e.g., the HTTP method might be a "GET" or a "POST") but your classifier probably needs to operate on numbers.  Thus, we might establish a mapping for the HTTP method, where "GET" is represented by a 1, and "POST" is represented by 2 (and other methods are other numbers, of course).  
+It seems like given those, you should be able to look at an individual entry and decide whether it has SQL in the request somewhere (probably in the parameter values).  As a human, you certainly can (sebas comment: you most probably can?).  Keep in mind, though, that most of these "features" are actually not very useful to a computer.  Most of these are strings (e.g., the HTTP method might be a "GET" or a "POST") but your classifier probably needs to operate on numbers.  Thus, we might establish a mapping for the HTTP method, where "GET" is represented by a 1, and "POST" is represented by 2 (and other methods are other numbers, of course).  (sebas comment: To base the discussion in a specific example, such as the mapping, may be dangerous. Here some may argue that the mapping is optional depending on the goal and technique)
 
-Finally, we have something that we can do math with!  However, we also just broke the linkage between the original data and the feature that our classifier is computing against.  Just as we established a mapping to convert the human-readable data into something the machine can do math with, we would need to maintain the reverse mapping if we want to audit what happened in a meaningful way.  
+Finally, we have something that we can do math with!  However, we also just broke the linkage between the original data and the feature that our classifier is computing against. Just as we established a mapping to convert the human-readable data into something the machine can do math with, we would need to maintain the reverse mapping if we want to audit what happened in a meaningful way.  
 
-For a more complicated case, consider what we need to do with any request paramters (that is, anything afer the *?* in the URI, such as */test.php?foo=bar*).  It's not correct to just map each unique string to a number as we did with the HTTP method, and yet we can't directly operate on the string itself.  What we actually have to do is to find a set of numbers that *describe* the string without actually reproducing it. You could consider easy descriptions, such as the length of the string (7, in this example), or more complicated ones such as the ratio of SQL special characters to the length of the string (1/7 in this case, because of the *=* sign).  
+For a more complicated case, consider what we need to do with any request parameters (that is, anything after the *?* in the URI, such as */test.php?foo=bar*) (sebas comments: Be careful, previously you defined parameters _and_ values, and now you say that everything after the ? are parameters).  It's not correct to just map each unique string to a number as we did with the HTTP method, and yet we can't directly operate on the string itself.  What we actually have to do is to find a set of numbers that *describe* the string without actually reproducing it. You could consider easy descriptions, such as the length of the string (7, in this example), or more complicated ones such as the ratio of SQL special characters to the length of the string (1/7 in this case, because of the *=* sign).  
 
-Here again, though, we run into a mapping problem.  Given a description of just a bunch of numbers, it's actually not possible to "go back" and recreate the original string.  Right there, we're running into trouble with explainability.  Even if you know that the ratio was 1/7, you have no idea which character appeared in the string, nor where it appeared.  We can't tell what the original input was since we're operating at a different level of abstraction now.    
+Here again, though, we run into a mapping problem.  Given a description of just a bunch of numbers, it's actually not possible to "go back" and recreate the original string.  Right there, we're running into trouble with explainability. Even if you know that the ratio was 1/7, you have no idea which character appeared in the string, nor where it appeared. We can't tell what the original input was since we're operating at a different level of abstraction now.    
 
 Given all this, it's not really a surprise that most ML systems cannot explain how they arrived at their conclusions.  It's almost like trying to reverse a one-way hash (as with password cracking).  We don't know how to work backwards from the finished result in order to recover the original data, and it's likely impossible to do so.  And even if you did the work to fully document how each input was processed through all the decision trees in our forest, they are just numbers and don't mean much in terms that humans can understand anyway.
 
 ###So What?
 Given the very nature of ML and the problems we use it to solve, though, I question whether "explainability" is even a reasonable expectation.  
 
-The fact is, we use ML when we operate at scales that would explode human heads ("Big Data" can be dangerous!).  Compared to the type of analysis we're used to doing in the security space (network forensics, NSM alert validation, etc), ML solves fundamentally different problems in a fundamentally different (due to scale) space.  
+The fact is, we use ML when we operate at scales that would explode human heads ("Big Data" can be dangerous!).  Compared to the type of analysis we're used to doing in the security space (network forensics, NSM alert validation, etc.), ML solves fundamentally different problems in a fundamentally different (due to scale) space.  
 
 With any reasonably complex system, the model is dealing with so many features and so many data points that the idea of translating such a complicated set of information into something a human can understand in detail is ludicrous.  It's akin to trying to draw a [hypercube](http://en.wikipedia.org/wiki/Hypercube) on paper.  You can't even draw the third dimension, let alone the fourth (or higher) dimensions.  
 
@@ -51,8 +52,19 @@ That's not to say that we can't come close, though.  It's up the vendors to prov
 ###Conclusion
 So I agree with Dr. Chuvakin that explainable ML systems are hard, and in most practical cases, impossible.  However, this just doesn't bother me because I never expected detailed explanations in the first place.  Even if I were able to get them, I *certainly* wouldn't have time to evaluate all of them.  
 
-What I *do* expect, though, is that the system provide me some level of acceptable evidence, even at a highly digested level.  This could be the aformentioned time series graphs to prove that the "shape" of the series was anomalous (even though I don't necessary know *how* that shape was computed).  In some cases, it could even be as simple as just showing me the original log entries that were the inputs to the ML algorithm in the first place and letting me make up my own mind (essentially evaluating how much I trust the machine's judgement, rather than doing a full analysis from scratch). I wouldn't want to have to manually validate everything, since that would probably destroy most of the value I wanted to get out of the system in the first place, but it's critical that I **always** have the ability to do so.
+What I *do* expect, though, is that the system provide me some level of acceptable evidence, even at a highly digested level.  This could be the aforementioned time series graphs to prove that the "shape" of the series was anomalous (even though I don't necessary know *how* that shape was computed).  In some cases, it could even be as simple as just showing me the original log entries that were the inputs to the ML algorithm in the first place and letting me make up my own mind (essentially evaluating how much I trust the machine's judgement, rather than doing a full analysis from scratch). I wouldn't want to have to manually validate everything, since that would probably destroy most of the value I wanted to get out of the system in the first place, but it's critical that I **always** have the ability to do so.
 
 We use ML and other analytics techniques to help us make sense of datasets that are too big for us to process, to complex for us to understand, or both.  It's not effective (and is probably a waste of time) to expect that we have to understand every step in the process.  Rather, we need to understand our goals, our data and our algorithms in enough detail that we can develop a comfort level with the fact that we're just not equipped to deal with the problems we developed ML to solve in the first place. 
 
 And that's OK.
+
+
+## Seba's general comments 
+
+- About explainability: It may be possible to compare ML explainability to human behavior. Do you understand why other people make decisions? Sometimes yes, sometimes no. And do you trust them? Well, again, sometimes. People need to gain your trust if you want to blindly accept what they do. It may be possible to do the same with algorithms. 
+- Chuvakin is ok with recommendation systems. Although you also can't explain the results there, I think that he likes them because the cost of the errors in those algorithms is negligible. So nobody is being bothered too much.
+- From the point of view of the creators of the algorithms, it is very desirable to be able to understand why your algorithm produced those results. Unfortunately, most of the algorithms can not explain them and therefore the researcher don't know *how* to improve the algorithms.
+
+
+
+
