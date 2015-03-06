@@ -32,11 +32,9 @@ I propose a simple directory structure, such as (bow before the ASCII):
               |...
 ```
 
-Also, don't commit straight to `master`. It's rude.
-
 # Current contributors
 
 * Alex Pinto ([@alexcpsec](https://twitter.com/alexcpsec))
 * Mike Sconzo ([@sooshie](https://twitter.com/sooshie))
-
-Contributors will be added as more people are interested.
+* David J Bianco ([@DavidJBianco](https://twitter.com/DavidJBianco))
+* Sebastian Garcia ([@eldracote](https://twitter.com/eldracote))
