@@ -9,12 +9,9 @@ Please add the content and blog posts as [Github-flavored Markdown](https://help
 do our best to translate it to what our current CMS is able to handle.
 
 All content and code committed here is licensed GPL Affero v3 and will be released
-on the [mlsecproject.org](https://mlsecproject.org) website, even though this
-is a Private repository.
+on the [mlsecproject.org](https://mlsecproject.org) website.
 
-Having a Private repository gives us some more room to breathe and edit these
-posts and new pages without the judging eyes of the community. Well, at least
-until we get our :shit: together :grinning:
+If you are interested in contributing, please submit a pull request.
 
 I propose a simple directory structure, such as (bow before the ASCII):
 ```
