@@ -1,7 +1,7 @@
-mlsecproject.org-content
+blog.mlsecproject.org
 ========================
 
-Staging area for content to be added to mlsecproject.org
+Contributor content to be added to the MLSec Project blog
 
 # How to contribute
 
