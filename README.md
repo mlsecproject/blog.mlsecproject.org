@@ -16,17 +16,13 @@ If you are interested in contributing, please submit a pull request.
 I propose a simple directory structure, such as (bow before the ASCII):
 ```
   |__ posts
-  |     |__ 2015
-  |          |__ drafts
-  |          |   |__ 2015-XX-XX_post_title_still_editing.md
-  |          |
-  |          |__ 01
-  |          |   |__ 2015-01-05_happy_holidays_from_MLSec_Project.md
-  |          |...
-  |
-  |__ sections
-        |__ secrepo
-              |...
+        |__ 2015
+             |__ drafts
+             |   |__ 2015-XX-XX_post_title_still_editing.md
+             |
+             |__ 01
+             |   |__ 2015-01-05_happy_holidays_from_MLSec_Project.md
+             |...
 ```
 
 # Current contributors
